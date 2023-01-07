@@ -1,0 +1,73 @@
+<!-- // User is presented with questions - array of objects
+    //  Format for questions???
+        // Object that conatins {question: string, Choices: array, answer: string}
+        // Display question - loop
+        //  append question
+        // append choices array
+
+// user selects an answer(button,radio,checkboxes)data-answer = ""
+    //  click event is on the parent container
+    //  how to know which element was clicked(event.target)
+    // if the answer is correct display next question access array of questions object 
+    // if answer is incorrect add 15 seconds to score and display next question
+
+    //  When all questions are answered display form to submit initials
+    //  save form values score and initials to local STrorage
+
+//  change to highscores HTML
+    //  read values from localstorage
+    //  append score values to page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css" />
+    <title>Timed Quiz</title>
+</head>
+<header>
+    <h1 class="time"></h1>
+    <link id="scoreboard" href="highScore.html"></h2>
+
+</header>
+<body>  
+
+    <div id="main"> 
+<div id="start">
+    <h2>Dog trivia</h2>
+    <p> This quiz is <bold>timed,</bold> but choose carefully- every wrong answer will subtract time from the clock!!</p>
+    <button id="startButton">Start</button>
+</div>
+
+
+</div>
+<!-- Quiz Content -->
+<div id="questionContainer" class="hide">
+<header>
+    <div class="title" style="text-align:center">Dog quiz</div>
+    <div class="timer">
+        <div class="time">Time Left</div>
+        <div class="timer_sec"></div>
+    </div>
+    <div class="time_line"></div>
+</header>
+
+<div id="questionContainer" class="hide">
+
+    <div id="questionTitle"></div>
+    <div id="answerChoices"></div>
+</div>
+    </div>
+<form>
+<!-- enter your initials -->
+</form>
+<div class="buttons">
+    <button class="restart">Play again!</button>
+    <button class="quit">I'm all done.</button>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
