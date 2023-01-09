@@ -5,9 +5,14 @@ var restartButton = document.getElementById("restart");
 var questionTitle = document.getElementById("questionTitle");
 var answerChoices = document.getElementById("answerChoices");
 var scoreboard = 0;
+var timeEl = document.getElementById("time");
+var mainTimerEl = document.querySelector("main-timer");
+var secondsLeft = 80; //Set starting length of time
 
 startScreen.style.display = "block";
 questionContainer.style.display = "none";
+timeEl.style.display = "none"
+
 
 function init() {
   getScoreboard();
@@ -65,7 +70,7 @@ var quizQuestions = [
 function showQuestion() {
   startScreen.style.display = "none";
   questionContainer.style.display = "block";
-  // timeEl.style.display = "block";
+  timeEl.style.display = "block";
   showQuiz(currentI);
 } // Display question - loop. Hide start page. add hide class by targeting in js.
 // console.log(quizQuestions[0].question);
@@ -97,7 +102,7 @@ function showQuiz(currentI) {
       if (chosen == quizQuestions[currentI].answer) {
         scoreboard = scoreboard + 20
       } else {
-        scoreboard = scoreboard - 20
+        secondsLeft = secondsLeft - 15
       }
       currentI++
       showQuiz(currentI)
@@ -118,7 +123,8 @@ function endQuiz (){
 //  create submit button
 var submitScore = getElementById ('initials')
 // on submit, localStorage.setItem for initials
-
+localStorage.setItem("Your Score:", JSON.stringify(scoreboard));
+renderMessage();
 // redirect to score page - localStorage.getItem for initials
 
 
@@ -129,22 +135,20 @@ var submitScore = getElementById ('initials')
 // create function for reseting the game  - restartButton.addEventListener("click",)
 
 // TIMER 
-var timeEl = document.getElementById("time");
-var mainTimerEl = document.querySelector("main-timer");
-var secondsLeft = 80; //Set starting length of time
 
 function startTimer() {
   // Sets time interval
    var timerInterval = setInterval(function() {
     secondsLeft--;
-    console.log (secondsLeft);
-    timeEl.textContent = secondsLeft + "seconds remaining";
+    timeEl.textContent = secondsLeft + " seconds remaining";
     if(secondsLeft === 0) {
       clearInterval(timerInterval);
+      //endQuiz()
     }
     }, 1000);
 }
 
+ 
 // function to append 
 
 
