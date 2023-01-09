@@ -5,8 +5,7 @@ var restartButton = document.getElementById("restart");
 var questionTitle = document.getElementById("questionTitle");
 var answerChoices = document.getElementById("answerChoices");
 var scoreboard = 0;
-var timerEl = document.querySelector(".timer");
-var secondsLeft = 10;
+
 startScreen.style.display = "block";
 questionContainer.style.display = "none";
 
@@ -17,7 +16,8 @@ function init() {
 function startQuiz() {
   startTimer();
   showQuestion();
-  console.log("startQuiz");
+  console.log(showQuestion);
+  console.log(startTimer)
 }
 
 startButton.addEventListener("click", startQuiz);
@@ -65,6 +65,7 @@ var quizQuestions = [
 function showQuestion() {
   startScreen.style.display = "none";
   questionContainer.style.display = "block";
+  // timeEl.style.display = "block";
   showQuiz(currentI);
 } // Display question - loop. Hide start page. add hide class by targeting in js.
 // console.log(quizQuestions[0].question);
@@ -109,35 +110,43 @@ function showQuiz(currentI) {
 }
 
 function endQuiz (){
-  questionContainer.innerHTML = "QUIZ OVER!!"
+  questionContainer.innerHTML = "QUIZ OVER!!";
+
 }
 
 // create input for their initials
 //  create submit button
-var submitScore = getElementById
+var submitScore = getElementById ('initials')
 // on submit, localStorage.setItem for initials
+
 // redirect to score page - localStorage.getItem for initials
 
 
-// append choices array as buttons
-var answerButton = document.createElement("button");
+// // append choices array as buttons
+// var answerButton = document.createElement("button");
 // answerButton.innerText = quizQuestions.options()
 
 // create function for reseting the game  - restartButton.addEventListener("click",)
 
-// TIMER - Select element by class
-var timeEl = document.querySelector(".time");
-//Set starting length of time
-var secondsLeft = 80;
+// TIMER 
+var timeEl = document.getElementById("time");
+var mainTimerEl = document.querySelector("main-timer");
+var secondsLeft = 80; //Set starting length of time
 
 function startTimer() {
   // Sets time interval
-  //  var timerInterval = setInterval(function() {
-  //   secondsLeft--;
-  //   // displays time remaining
-  //   timeEl.textContent = secondsLeft;
-  //   }, 1000);
+   var timerInterval = setInterval(function() {
+    secondsLeft--;
+    console.log (secondsLeft);
+    timeEl.textContent = secondsLeft + "seconds remaining";
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+    }
+    }, 1000);
 }
+
+// function to append 
+
 
 // function setTime() {
 //   var timerInterval = setInterval(function() {
