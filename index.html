@@ -44,7 +44,7 @@
 
 </div>
 <!-- Quiz Content -->
-<div id="questionContainer" class="hide">
+<div id="questionContainer">
 <header>
     <div class="title" style="text-align:center">Dog quiz</div>
     <div class="timer">
@@ -54,14 +54,17 @@
     <div class="time_line"></div>
 </header>
 
-<div id="questionContainer" class="hide">
+<div id="questionContainer">
 
     <div id="questionTitle"></div>
-    <div id="answerChoices"></div>
+    <ul id="answerChoices"></ul>
 </div>
     </div>
 <form>
-<!-- enter your initials -->
+    <!-- user enters initials -->
+<label for="initials">Your initials: </label>
+<input type="text" id="initials" >
+    <input type="submit">
 </form>
 <div class="buttons">
     <button class="restart">Play again!</button>
