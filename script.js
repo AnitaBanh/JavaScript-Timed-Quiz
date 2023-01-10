@@ -1,23 +1,22 @@
 var startScreen = document.getElementById("start");
 var startButton = document.getElementById("startButton");
 var questionContainer = document.getElementById("questionContainer");
-var playAgain = document.getElementById("play-again");
+var playAgain = document.getElementById("playAgain");
 var questionTitle = document.getElementById("questionTitle");
 var answerChoices = document.getElementById("answerChoices");
-var intakeInitialsForm = document.getElementById("intake-initials-form")
+var postQuizSection = document.getElementById("postQuizDiv")
 var viewScoreboardButton = document.getElementById("view-scoreboard")
+var saveInitialsButton = document.getElementById("saveInitials")
+
 var scoreboard = 0;
 var timeEl = document.getElementById("time");
 var mainTimerEl = document.querySelector("main-timer");
-var secondsLeft = 80; //Set starting length of time
+var secondsLeft = 5; //Set starting length of time
 
 startScreen.style.display = "block";
 timeEl.style.display = "none";
 questionContainer.style.display = "none";
-playAgain.style.display = "none";
-intakeInitialsForm.style.display = "none";
-viewScoreboardButton.style.display = "none";
-
+postQuizSection.style.display = "none";
 
 function init() {
   getScoreboard();
@@ -25,9 +24,12 @@ function init() {
 
 // TIMER 
 
+
+
 function startTimer() {
   // Sets time interval
-   var timerInterval = setInterval(function() {
+  timeEl.textContent = secondsLeft + " seconds remaining";
+  var timerInterval = setInterval(function () {
     secondsLeft--;
     timeEl.textContent = secondsLeft + " seconds remaining";
     if(secondsLeft === 0) {
@@ -35,6 +37,7 @@ function startTimer() {
       endQuiz()
     }
     }, 1000);
+   
 }
 
 
@@ -46,6 +49,8 @@ function startQuiz() {
 }
 
 startButton.addEventListener("click", startQuiz);
+saveInitialsButton.addEventListener('click',saveInitials);
+viewScoreboardButton.addEventListener("click", redirectToHighScore);
 
 var quizQuestions = [
   {
@@ -125,50 +130,47 @@ function showQuiz(currentI) {
       }
       currentI++
       showQuiz(currentI)
-      if(scoreboard <= 0) {
-        scoreboard = 0
-      }
+      // if(scoreboard < 0) {
+      //   scoreboard = 0
+      // }
       console.log(scoreboard)
     });
   });
 }
 
-function endQuiz (){
+function endQuiz() {
   questionContainer.innerHTML = "QUIZ OVER!!";
-  intakeInitialsForm.style.display = "block";
-  viewScoreboardButton.style.display = "block";
+  postQuizSection.style.display = "block";
+  // viewScoreboardButton.style.display = "block";
 }
 
-// create input for their initials
-//  create submit button
-var userInitials = getElementById ('user-initials')
+var userInitials = document.getElementById ('initials');
+function saveInitials() {
+  // on submit, localStorage.setItem for initials
+  var logToScoreboard = {
+    userInitials: userInitials.value,
+    scoreboard: scoreboard
+  };
+  var currentScoreboard = JSON.parse(localStorage.getItem("record"));
+  if (!Array.isArray(currentScoreboard)) {
+    currentScoreboard = [];
+  }
+  localStorage.setItem("record", JSON.stringify(currentScoreboard.push(logToScoreboard)));
+  console.log(logToScoreboard)
+}
 
-// on submit, localStorage.setItem for initials
-var logToScoreboard = {
-  userInitials: userInitials.value,
-  scoreboard: scoreboard
-};
-localStorage.setItem("record", JSON.stringify(logToScoreboard));
-renderMessage();
-console.log (logToScoreboard)
 // redirect to score page - localStorage.getItem for initials
-viewScoreboardButton.addEventListener("click", redirectToHighScore)
-function redirectToHighScore (){
+
+function redirectToHighScore() {
   window.location.href = "highScore.html";
 }
-var userRecord = JSON.parse(localStorage.getItem("record"))
 
-function updateScoreboard () {
-  let li = document.createElement("li");
-  li.innerHTML = userRecord
+function reloadQuiz() {
+  window.location.reload()
 }
+playAgain.addEventListener("click", reloadQuiz);
 
 
-playAgain.addEventListener("click", startScreen);
-
-
-
- 
 // function to append 
 
 

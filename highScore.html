@@ -8,15 +8,20 @@
 </head>
 <body>
     <h2>Quiz Scoreboard</h2>
-        <form method="POST">
-          <div class="input-group">
-            <label for="user-initials">First Name</label>
-            <input type="text" name="user-initials" id="user-initials" placeholder="ABC" />
+          <div id="scoreboard">
+            <ul id="scores"></ul>
           </div>
-          <button id="save-score">Save</button>
-        </form>
-        <ul id="high-score"></ul>
-          <script src="script.js"></script>
+           
+          <script>
+var scores = document.getElementById("scores");
+
+var userRecord = JSON.parse(localStorage.getItem("record"))
+console.log (userRecord)
+
+let li = document.createElement("li");
+  li.innerHTML = userRecord.userInitials + " " + userRecord.scoreboard
+scores.appendChild(li);
+          </script>
          
 </body>
 </html>
