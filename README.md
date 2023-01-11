@@ -5,7 +5,7 @@ This application will generate a timed quiz with 5 questions related to dogs.
 Each question is worth 20 points.
 This quiz is timed, starting with 80 seconds, but choose carefully- every wrong answer will subtract 15 seconds from the clock!!
 
- ##link to deployed application
+ Link to deployed application
  https://anitabanh.github.io/JavaScript-Timed-Quiz/
  
  ![image](https://user-images.githubusercontent.com/120350675/211727170-90a486ce-0693-44a1-80e2-f93d743f8b42.png)
