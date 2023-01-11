@@ -22,9 +22,10 @@ body {
     margin: 30px;
 }
 
-.result {
+.answerResponse {
     color:gray;
     border-top: 1px solid grey;
+    font-style: italic;
 }
 
 
