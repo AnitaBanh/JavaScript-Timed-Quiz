@@ -146,9 +146,9 @@ function showQuiz(currentI) {
 }
 
 function endQuiz() {
-  questionContainer.innerHTML = "QUIZ OVER!!";
+  questionContainer.innerHTML = "QUIZ OVER!! Your score is " + scoreboard + ".  ";
   postQuizSection.style.display = "block";
-  // viewScoreboardButton.style.display = "block";
+  
 }
 
 var userInitials = document.getElementById ('initials');
@@ -167,7 +167,7 @@ function saveInitials() {
   localStorage.setItem("record", JSON.stringify(currentScoreboard));
 }
 
-// redirect to score page - localStorage.getItem for initials
+// redirect to score page 
 
 function redirectToHighScore() {
   window.location.href = "highScore.html";
@@ -177,86 +177,3 @@ function reloadQuiz() {
   window.location.reload()
 }
 playAgain.addEventListener("click", reloadQuiz);
-
-
-// function to append 
-
-
-// function setTime() {
-//   var timerInterval = setInterval(function() {
-//     secondsLeft--;
-//     timeEl.textContent = secondsLeft + " seconds left.";
-
-//     if(secondsLeft === 0) {
-//       // Stops execution of action at set interval
-//       clearInterval(timerInterval);
-//       // Calls function to create and append image
-//       alert("the end");
-//     }
-
-//   }, 1000);
-// }
-
-//   if (timerCount >= 0) {
-//     // Tests if answer is incorrect
-//     if (isWrong && timerCount > 0) {
-//       // reduces time as penalty
-//       timer-10000;
-//     }
-//   }
-//   // Tests if time has run out
-//   if (timerCount === 0) {
-//     // Clears interval
-//     clearInterval(timer);
-//     endGame();
-//   }
-
-// getting questions and options from array
-// Example: function displayQuestion(index){
-//     var questionText = document.querySelector(".questionTitle");
-//     //creating a new span and div tag for question and option and passing the value using array index
-//     let option_tag = '<div class="option"><span>'+ questions[index].options[0] +'</span></div>'
-//     + '<div class="option"><span>'+ questions[index].options[1] +'</span></div>'
-//     + '<div class="option"><span>'+ questions[index].options[2] +'</span></div>'
-//     + '<div class="option"><span>'+ questions[index].options[3] +'</span></div>';
-//     que_text.innerHTML = que_tag; //adding new span tag inside que_tag
-//     option_list.innerHTML = option_tag; //adding new div tag inside option_tag
-
-//     const option = option_list.querySelectorAll(".option");
-//     // set onclick attribute to all available options
-//     for(i=0; i < option.length; i++){
-//         option[i].setAttribute("onclick", "optionSelected(this)");
-//     }
-// }
-
-// //if user clicked on option
-// function optionSelected(answer){
-//     clearInterval(counter); //clear counter
-//     clearInterval(counterLine); //clear counterLine
-//     let userAns = answer.textContent; //get user selected option
-//     let correcAns = questions[que_count].answer; //getting correct answer from array
-//     const allOptions = option_list.children.length; //getting all option items
-
-//     if(userAns == correcAns){ //if user selected option is equal to array's correct answer
-//         userScore += 1; //upgrading score value with 1
-//         answer.classList.add("correct"); //adding green color to correct selected option
-//         answer.insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to correct selected option
-//         console.log("Correct Answer");
-//         console.log("Your correct answers = " + userScore);
-//     }else{
-//         answer.classList.add("incorrect"); //adding red color to correct selected option
-//         answer.insertAdjacentHTML("beforeend", crossIconTag); //adding cross icon to correct selected option
-//         console.log("Wrong Answer");
-//         for(i=0; i < allOptions; i++){
-//             if(option_list.children[i].textContent == correcAns){ //if there is an option which is matched to an array answer
-//                 option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
-//                 option_list.children[i].insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to matched option
-//                 console.log("Auto selected correct answer.");
-//             }
-//         }
-//     }
-//     for(i=0; i < allOptions; i++){
-//         option_list.children[i].classList.add("disabled"); //once user select an option then disabled all options
-//     }
-
-// add timer forloop for questions, array of objects for questions, functionality for right/wrong and cycle through questions.

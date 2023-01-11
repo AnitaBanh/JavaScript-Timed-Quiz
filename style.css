@@ -22,4 +22,9 @@ body {
     margin: 30px;
 }
 
+.result {
+    color:gray;
+    border-top: 1px solid grey;
+}
+
 
