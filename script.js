@@ -13,7 +13,7 @@ var wrongAnswer = document.getElementById("wrongAnswer");
 
 var scoreboard = 0;
 var timeEl = document.getElementById("time");
-var mainTimerEl = document.querySelector("main-timer");
+
 var secondsLeft = 80; //Set starting length of time
 
 startScreen.style.display = "block";
@@ -31,7 +31,7 @@ function startTimer() {
   timeEl.textContent = secondsLeft + " seconds remaining";
   var timerInterval = setInterval(function () {
     secondsLeft--;
-    timeEl.textContent = secondsLeft + " seconds remaining";
+    timeEl.textContent = "Time: " + secondsLeft;
     if(secondsLeft === 0) {
       clearInterval(timerInterval);
       endQuiz()
@@ -97,8 +97,7 @@ function showQuestion() {
   questionContainer.style.display = "block";
   timeEl.style.display = "block";
   showQuiz(currentI);
-} // Display question - loop. Hide start page. add hide class by targeting in js.
-// console.log(quizQuestions[0].question);
+} 
 
 var currentI = 0;
 
@@ -148,7 +147,7 @@ function showQuiz(currentI) {
 function endQuiz() {
   questionContainer.innerHTML = "QUIZ OVER!! Your score is " + scoreboard + ".  ";
   postQuizSection.style.display = "block";
-  
+  timeEl.style.display = "none"
 }
 
 var userInitials = document.getElementById ('initials');
