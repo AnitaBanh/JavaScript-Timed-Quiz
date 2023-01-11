@@ -44,14 +44,13 @@ function startTimer() {
 function startQuiz() {
   startTimer();
   showQuestion();
-  console.log(showQuestion);
-  console.log(startTimer)
 }
 
 startButton.addEventListener("click", startQuiz);
 saveInitialsButton.addEventListener('click',saveInitials);
 viewScoreboardButton.addEventListener("click", redirectToHighScore);
-
+ 
+// Array of quest questions
 var quizQuestions = [
   {
     numb: 1,
@@ -101,7 +100,7 @@ function showQuestion() {
 
 var currentI = 0;
 
-//  append question
+//  append question and answer buttons to page
 function showQuiz(currentI) {
   if(currentI >= quizQuestions.length) {
     endQuiz ();
