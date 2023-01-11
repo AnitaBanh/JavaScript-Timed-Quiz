@@ -40,30 +40,31 @@
         </p>
         <button id="startButton">Start</button>
       </div>
-    </div>
-    <!-- Quiz Content -->
-    <div id="questionContainer">
-      <header>
-        <div class="title" style="text-align: center">Dog quiz</div>
-      </header>
-      <!-- Quiz timer -->
-      <h1 id="time" style="text-align: center"></h1>
-      <div id="main-timer"></div>
 
-      <div id="main"></div>
+      <!-- Quiz Content -->
       <div id="questionContainer">
-        <div id="questionTitle"></div>
-        <ul id="answerChoices"></ul>
+        <header>
+          <div class="title" style="text-align: center">Dog quiz</div>
+        </header>
+        <!-- Quiz timer -->
+        <h1 id="time" style="text-align: center"></h1>
+        <div id="main-timer"></div>
+        <div id="questionContainer">
+          <div id="questionTitle"></div>
+          <ul id="answerChoices"></ul>
+          <p id="correctAnswer" style="display: none">CORRECT!</p>
+          <p id="wrongAnswer" style="display: none">Wrong answer :(</p>
+        </div>
       </div>
-    </div>
 
-    <div id="postQuizDiv">
-      <!-- user enters initials -->
-      <label for="initials" placeholder="ABC">Your initials: </label>
-      <input type="text" id="initials" placeholder="ABC" />
-      <button id="saveInitials">Save</button>
-      <button id="playAgain">Play again!</button>
-      <button id="view-scoreboard">View Scoreboard</button>
+      <div id="postQuizDiv">
+        <!-- user enters initials -->
+        <label for="initials" placeholder="ABC">Your initials: </label>
+        <input type="text" id="initials" placeholder="ABC" />
+        <button id="saveInitials">Save</button>
+        <button id="playAgain">Play again!</button>
+        <button id="view-scoreboard">View Scoreboard</button>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>

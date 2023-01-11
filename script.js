@@ -5,13 +5,16 @@ var playAgain = document.getElementById("playAgain");
 var questionTitle = document.getElementById("questionTitle");
 var answerChoices = document.getElementById("answerChoices");
 var postQuizSection = document.getElementById("postQuizDiv")
-var viewScoreboardButton = document.getElementById("view-scoreboard")
-var saveInitialsButton = document.getElementById("saveInitials")
+var viewScoreboardButton = document.getElementById("view-scoreboard");
+var saveInitialsButton = document.getElementById("saveInitials");
+var correctAnswer = document.getElementById("correctAnswer");
+var wrongAnswer = document.getElementById("wrongAnswer");
+
 
 var scoreboard = 0;
 var timeEl = document.getElementById("time");
 var mainTimerEl = document.querySelector("main-timer");
-var secondsLeft = 5; //Set starting length of time
+var secondsLeft = 80; //Set starting length of time
 
 startScreen.style.display = "block";
 timeEl.style.display = "none";
@@ -23,11 +26,8 @@ function init() {
 }
 
 // TIMER 
-
-
-
+// Set time interval
 function startTimer() {
-  // Sets time interval
   timeEl.textContent = secondsLeft + " seconds remaining";
   var timerInterval = setInterval(function () {
     secondsLeft--;
@@ -105,14 +105,13 @@ var currentI = 0;
 //  append question
 function showQuiz(currentI) {
   if(currentI >= quizQuestions.length) {
-    endQuiz ()
-    currentI = 0
+    endQuiz ();
+    currentI = 0;
   }
-    answerChoices.innerHTML = ""
-    let currentQ = quizQuestions[currentI].question;
-    questionTitle.innerHTML = currentQ;
-    var currentO = quizQuestions[currentI].options;
-  // }
+  answerChoices.innerHTML = "";
+  let currentQ = quizQuestions[currentI].question;
+  questionTitle.innerHTML = currentQ;
+  var currentO = quizQuestions[currentI].options;
   currentO.forEach(function (i) {
     let li = document.createElement("li");
     let button = document.createElement("button");
@@ -124,15 +123,23 @@ function showQuiz(currentI) {
       var chosen = button.innerHTML;
       if (chosen == quizQuestions[currentI].answer) {
         scoreboard = scoreboard + 20;
-        
-      } else {
-        secondsLeft = secondsLeft - 15
+        correctAnswer.style.display = "block"
+        setTimeout( function(){
+          correctAnswer.style.display = "none"
+          }, 1000);
+      } 
+      else {
+        secondsLeft = secondsLeft - 15;
+        wrongAnswer.style.display = "block"
+        setTimeout( function(){
+          wrongAnswer.style.display = "none"
+          }, 1000);
+        if (secondsLeft <= 0) {
+          endQuiz()
+        }
       }
       currentI++
       showQuiz(currentI)
-      // if(scoreboard < 0) {
-      //   scoreboard = 0
-      // }
       console.log(scoreboard)
     });
   });
@@ -155,8 +162,9 @@ function saveInitials() {
   if (!Array.isArray(currentScoreboard)) {
     currentScoreboard = [];
   }
-  localStorage.setItem("record", JSON.stringify(currentScoreboard.push(logToScoreboard)));
-  console.log(logToScoreboard)
+  currentScoreboard.push(logToScoreboard)
+  console.log(currentScoreboard)
+  localStorage.setItem("record", JSON.stringify(currentScoreboard));
 }
 
 // redirect to score page - localStorage.getItem for initials
