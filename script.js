@@ -50,7 +50,7 @@ startButton.addEventListener("click", startQuiz);
 saveInitialsButton.addEventListener('click',saveInitials);
 viewScoreboardButton.addEventListener("click", redirectToHighScore);
  
-// Array of quest questions
+// Array of questions
 var quizQuestions = [
   {
     numb: 1,
@@ -149,9 +149,9 @@ function endQuiz() {
   timeEl.style.display = "none"
 }
 
+//  save user initials to local storage
 var userInitials = document.getElementById ('initials');
 function saveInitials() {
-  // on submit, localStorage.setItem for initials
   var logToScoreboard = {
     userInitials: userInitials.value,
     scoreboard: scoreboard
@@ -166,11 +166,11 @@ function saveInitials() {
 }
 
 // redirect to score page 
-
 function redirectToHighScore() {
   window.location.href = "highScore.html";
 }
 
+// restart the quiz
 function reloadQuiz() {
   window.location.reload()
 }
